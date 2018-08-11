@@ -5,14 +5,14 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
-#include "neural_network/node/node_input.h"
+#include "neural_network/layer/neuron_layer.h"
 
 namespace neunet {
 
-NodeInput::NodeInput() {
+NeuronLayer::NeuronLayer() {
 }
 
-NodeInput::~NodeInput() {
+NeuronLayer::~NeuronLayer() {
 }
 
 }  // namespace neunet

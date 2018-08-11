@@ -8,17 +8,17 @@
 #pragma once
 
 #include "base/macros.h"
-#include "neural_network/node/node.h"
+#include "neural_network/layer/layer.h"
 
 namespace neunet {
 
-class NodeOutput : public Node {
+class InputLayer : public Layer {
  public:
-  NodeOutput();
-  ~NodeOutput();
+  InputLayer();
+  ~InputLayer();
 
  private:
-  DECLARE_NON_COPYABLE(NodeOutput);
+  DECLARE_NON_COPYABLE(InputLayer);
 };
 
 }  // namespace neunet

@@ -5,14 +5,20 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
-#include "neural_network/node/node_output.h"
+#pragma once
+
+#include "base/macros.h"
+#include "neural_network/layer/layer.h"
 
 namespace neunet {
 
-NodeOutput::NodeOutput() {
-}
+class OutputLayer : public Layer {
+ public:
+  OutputLayer();
+  ~OutputLayer();
 
-NodeOutput::~NodeOutput() {
-}
+ private:
+  DECLARE_NON_COPYABLE(OutputLayer);
+};
 
 }  // namespace neunet

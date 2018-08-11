@@ -12,13 +12,13 @@
 
 namespace neunet {
 
-class NodeNeuron : public Node {
+class NeuronNode : public Node {
  public:
-  NodeNeuron();
-  ~NodeNeuron();
+  NeuronNode();
+  ~NeuronNode();
 
  private:
-  DECLARE_NON_COPYABLE(NodeNeuron);
+  DECLARE_NON_COPYABLE(NeuronNode);
 };
 
 }  // namespace neunet

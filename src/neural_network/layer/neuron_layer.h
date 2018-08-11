@@ -12,13 +12,13 @@
 
 namespace neunet {
 
-class LayerInput : public Layer {
+class NeuronLayer : public Layer {
  public:
-  LayerInput();
-  ~LayerInput();
+  NeuronLayer();
+  ~NeuronLayer();
 
  private:
-  DECLARE_NON_COPYABLE(LayerInput);
+  DECLARE_NON_COPYABLE(NeuronLayer);
 };
 
 }  // namespace neunet
