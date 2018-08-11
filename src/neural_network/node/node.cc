@@ -5,13 +5,14 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
-#include "base/macros.h"
+#include "neural_network/node/node.h"
 
-class NeuralNetworkLayerInputs {
- public:
-  NeuralNetworkLayerInputs();
-  ~NeuralNetworkLayerInputs();
+namespace neunet {
 
- private:
-  DECLARE_NON_COPYABLE(NeuralNetworkLayerInputs);
-};
+Node::Node() {
+}
+
+Node::~Node() {
+}
+
+}  // namespace neunet

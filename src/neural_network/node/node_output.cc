@@ -7,8 +7,12 @@
 
 #include "neural_network/node/node_output.h"
 
+namespace neunet {
+
 NodeOutput::NodeOutput() {
 }
 
 NodeOutput::~NodeOutput() {
 }
+
+}  // namespace neunet

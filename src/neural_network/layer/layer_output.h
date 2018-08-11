@@ -5,10 +5,20 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
-#include "neural_network/neural_network_layer_inputs.h"
+#pragma once
 
-NeuralNetworkLayerInputs::NeuralNetworkLayerInputs() {
-}
+#include "base/macros.h"
+#include "neural_network/layer/layer.h"
 
-NeuralNetworkLayerInputs::~NeuralNetworkLayerInputs() {
-}
+namespace neunet {
+
+class LayerOutput : public Layer {
+ public:
+  LayerOutput();
+  ~LayerOutput();
+
+ private:
+  DECLARE_NON_COPYABLE(LayerOutput);
+};
+
+}  // namespace neunet

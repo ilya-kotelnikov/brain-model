@@ -7,8 +7,12 @@
 
 #include "neural_network/node/node_input.h"
 
+namespace neunet {
+
 NodeInput::NodeInput() {
 }
 
 NodeInput::~NodeInput() {
 }
+
+}  // namespace neunet

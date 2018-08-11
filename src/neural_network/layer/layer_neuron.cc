@@ -5,10 +5,14 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
-#include "neural_network/neural_network_layer_outputs.h"
+#include "neural_network/layer/layer_neuron.h"
 
-NeuralNetworkLayerOutputs::NeuralNetworkLayerOutputs() {
+namespace neunet {
+
+LayerNeuron::LayerNeuron() {
 }
 
-NeuralNetworkLayerOutputs::~NeuralNetworkLayerOutputs() {
+LayerNeuron::~LayerNeuron() {
 }
+
+}  // namespace neunet

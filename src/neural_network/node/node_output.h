@@ -5,9 +5,14 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
-#include "base/macros.h"
+#pragma once
 
-class NodeOutput {
+#include "base/macros.h"
+#include "neural_network/node/node.h"
+
+namespace neunet {
+
+class NodeOutput : public Node {
  public:
   NodeOutput();
   ~NodeOutput();
@@ -15,3 +20,5 @@ class NodeOutput {
  private:
   DECLARE_NON_COPYABLE(NodeOutput);
 };
+
+}  // namespace neunet

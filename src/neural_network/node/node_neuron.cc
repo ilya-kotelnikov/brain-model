@@ -7,8 +7,12 @@
 
 #include "neural_network/node/node_neuron.h"
 
+namespace neunet {
+
 NodeNeuron::NodeNeuron() {
 }
 
 NodeNeuron::~NodeNeuron() {
 }
+
+}  // namespace neunet

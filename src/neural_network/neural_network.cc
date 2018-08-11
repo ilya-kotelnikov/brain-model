@@ -7,8 +7,12 @@
 
 #include "neural_network/neural_network.h"
 
+namespace neunet {
+
 NeuralNetwork::NeuralNetwork() {
 }
 
 NeuralNetwork::~NeuralNetwork() {
 }
+
+}  // namespace neunet

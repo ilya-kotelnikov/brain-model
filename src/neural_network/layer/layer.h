@@ -5,11 +5,19 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
-#include "neural_network/neural_network_layer.h"
+#pragma once
 
-NeuralNetworkLayer::NeuralNetworkLayer() {
-}
+#include "base/macros.h"
 
-NeuralNetworkLayer::~NeuralNetworkLayer() {
-}
+namespace neunet {
 
+class Layer {
+ public:
+  Layer();
+  ~Layer();
+
+ private:
+  DECLARE_NON_COPYABLE(Layer);
+};
+
+}  // namespace neunet

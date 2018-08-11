@@ -5,7 +5,11 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
+#pragma once
+
 #include "base/macros.h"
+
+namespace neunet {
 
 class NeuralNetwork {
  public:
@@ -15,3 +19,5 @@ class NeuralNetwork {
  private:
   DECLARE_NON_COPYABLE(NeuralNetwork);
 };
+
+}  // namespace neunet
