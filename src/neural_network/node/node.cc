@@ -9,10 +9,14 @@
 
 namespace neunet {
 
-Node::Node() {
+Node::Node(Layer* layer) : layer_(layer) {
 }
 
 Node::~Node() {
+}
+
+Layer* Node::layer() {
+  return layer_;
 }
 
 }  // namespace neunet

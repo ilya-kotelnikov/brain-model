@@ -9,10 +9,15 @@
 
 namespace neunet {
 
-NeuronNode::NeuronNode() {
+NeuronNode::NeuronNode(Layer* layer) : Node(layer) {
 }
 
 NeuronNode::~NeuronNode() {
+}
+
+float NeuronNode::value() {
+  //TODO: impl!
+  return 0.;
 }
 
 }  // namespace neunet

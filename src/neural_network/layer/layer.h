@@ -7,14 +7,21 @@
 
 #pragma once
 
+#include <stdint.h>
+
 #include "base/macros.h"
 
 namespace neunet {
+
+class Node;
 
 class Layer {
  public:
   Layer();
   ~Layer();
+
+  uint32 count() const = 0;
+  Node* node(uint32 i) = 0;
 
  private:
   DECLARE_NON_COPYABLE(Layer);

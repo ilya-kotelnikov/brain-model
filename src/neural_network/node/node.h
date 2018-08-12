@@ -11,12 +11,20 @@
 
 namespace neunet {
 
+class Layer;
+
 class Node {
  public:
-  Node();
+  Node(Layer* layer);
   ~Node();
 
+  float value() = 0;
+
+  Layer* layer();
+
  private:
+  Layer* layer_;
+
   DECLARE_NON_COPYABLE(Node);
 };
 

@@ -7,17 +7,29 @@
 
 #pragma once
 
+#include <memory>
+#include <vector>
+
+#include <stdint.h>
+
 #include "base/macros.h"
 #include "neural_network/layer/layer.h"
 
 namespace neunet {
 
+class InputNode;
+
 class InputLayer : public Layer {
  public:
-  InputLayer();
+  InputLayer(uint32 input_count);
   ~InputLayer();
 
+  uint32 count() const override;
+  Node* node(uint32 i) override;
+
  private:
+  std::vector<std::unique_ptr<InputNode>> inputs_;
+
   DECLARE_NON_COPYABLE(InputLayer);
 };
 

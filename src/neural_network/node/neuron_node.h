@@ -14,8 +14,10 @@ namespace neunet {
 
 class NeuronNode : public Node {
  public:
-  NeuronNode();
+  NeuronNode(Layer* layer);
   ~NeuronNode();
+
+  float value() override;
 
  private:
   DECLARE_NON_COPYABLE(NeuronNode);

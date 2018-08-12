@@ -14,10 +14,16 @@ namespace neunet {
 
 class InputNode : public Node {
  public:
-  InputNode();
+  InputNode(Layer* layer);
   ~InputNode();
 
+  float set_value_from_dataset(float value);
+
+  float value() override;
+
  private:
+  float value_from_dataset_;
+
   DECLARE_NON_COPYABLE(InputNode);
 };
 

@@ -7,22 +7,11 @@
 
 #pragma once
 
-#include "base/macros.h"
-#include "neural_network/node/node.h"
+#include <stdint.h>
 
 namespace neunet {
 
-class OutputNode : public Node {
- public:
-  OutputNode(Layer* layer);
-  ~OutputNode();
-
-  float value() override;
-
- private:
-  float value_from_pre_layer_;
-
-  DECLARE_NON_COPYABLE(OutputNode);
-};
+constexpr uint32 kDefaultNeuronPerLayerCount = 1000;
+constexpr uint32 kDefaultSynapsesPerNeuronCount = 10;
 
 }  // namespace neunet

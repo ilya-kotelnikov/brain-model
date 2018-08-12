@@ -9,10 +9,14 @@
 
 namespace neunet {
 
-OutputNode::OutputNode() {
+OutputNode::OutputNode(Layer* layer) : Node(layer), value_from_pre_layer_(0.) {
 }
 
 OutputNode::~OutputNode() {
+}
+
+float OutputNode::value() {
+  return value_from_pre_layer_;
 }
 
 }  // namespace neunet
