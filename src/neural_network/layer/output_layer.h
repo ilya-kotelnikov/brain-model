@@ -12,6 +12,17 @@
 
 namespace neunet {
 
-using OutputLayer = GenericLayer<OutputNode>;
+class OutputLayer : public GenericLayer<OutputNode> {
+ public:
+  OutputLayer(uint32 output_count, Layer* last_neuron_layer);
+  ~OutputLayer();
+
+  Layer* last_neuron_layer();
+
+ private:
+  Layer* last_neuron_layer_;
+
+  DECLARE_NON_COPYABLE(OutputLayer);
+};
 
 }  // namespace neunet

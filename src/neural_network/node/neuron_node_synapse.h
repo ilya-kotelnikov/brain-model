@@ -11,22 +11,23 @@
 
 namespace neunet {
 
-class Layer;
+class Node;
 
-class Node {
+class NeuronNodeSynapse {
  public:
-  Node(Layer* layer);
-  ~Node();
+  NeuronNodeSynapse(Node* pre_node);
+  ~NeuronNodeSynapse();
 
-  virtual void UpdateValue() = 0;
-  virtual float CurrentValue() = 0;
+  float weight() const;
+  void set_weight(float value);
 
-  Layer* layer();
+  float CalculateValue();
 
  private:
-  Layer* layer_;
+  Node* pre_node_;
+  float weight_;
 
-  DECLARE_NON_COPYABLE(Node);
+  DECLARE_NON_COPYABLE(NeuronNodeSynapse);
 };
 
 }  // namespace neunet

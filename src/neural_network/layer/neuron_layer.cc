@@ -7,25 +7,28 @@
 
 #include "neural_network/layer/neuron_layer.h"
 
+#include <stdint.h>
+
 #include "neural_network/constants.h"
 #include "neural_network/node/neuron_node.h"
 
 namespace neunet {
 
+NeuronLayer::NeuronNodeParams::NeuronNodeParams()
+   : synapses_per_neuron_count(kDefaultSynapsesPerNeuronCount),
+     spike_treshold_value(kDefaultNeuronSpikeTresholdValue),
+     spike_value(kDefaultNeuronSpikeValue) {
+}
+
 NeuronLayer::NeuronLayer(uint32 neuron_count)
-    : GenericLayer<NeuronNode>(neuron_count),
-      synapses_per_neuron_count_(kDefaultSynapsesPerNeuronCount) {
+    : GenericLayer<NeuronNode>(neuron_count) {
 }
 
 NeuronLayer::~NeuronLayer() {
 }
 
-uint32 NeuronLayer::synapses_per_neuron_count() {
-  return synapses_per_neuron_count_;
-}
-
-void NeuronLayer::set_synapses_per_neuron_count(uint32 value) {
-  synapses_per_neuron_count_ = value;
+const NeuronLayer::NeuronNodeParams& NeuronLayer::neuron_node_params() const {
+  return neuron_node_params_;
 }
 
 void NeuronLayer::GenerateSynapses(Layer* pre_layer) {

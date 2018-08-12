@@ -20,8 +20,8 @@ class Layer {
   Layer();
   ~Layer();
 
-  uint32 count() const = 0;
-  Node* node(uint32 i) = 0;
+  virtual uint32 count() const = 0;
+  virtual Node* node(uint32 i) = 0;
 
  private:
   DECLARE_NON_COPYABLE(Layer);

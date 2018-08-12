@@ -19,7 +19,9 @@ class InputNode : public Node {
 
   float set_value_from_dataset(float value);
 
-  float value() override;
+  // Node implementation:
+  void UpdateValue() override;
+  float CurrentValue() override;
 
  private:
   float value_from_dataset_;

@@ -14,13 +14,15 @@ namespace neunet {
 
 class OutputNode : public Node {
  public:
-  OutputNode(Layer* layer);
+  OutputNode(Layer* layer, Node* last_neuron_layer_node);
   ~OutputNode();
 
-  float value() override;
+  // Node implementation:
+  void UpdateValue() override;
+  float CurrentValue() override;
 
  private:
-  float value_from_pre_layer_;
+  Node* last_neuron_layer_node_;
 
   DECLARE_NON_COPYABLE(OutputNode);
 };

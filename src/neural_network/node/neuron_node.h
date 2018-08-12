@@ -7,19 +7,32 @@
 
 #pragma once
 
+#include <memory>
+#include <vector>
+
 #include "base/macros.h"
 #include "neural_network/node/node.h"
 
 namespace neunet {
+
+class NeuronNodeSynapse;
 
 class NeuronNode : public Node {
  public:
   NeuronNode(Layer* layer);
   ~NeuronNode();
 
-  float value() override;
+  void AddSynapse(Node* pre_node);
+
+  // Node implementation:
+  void UpdateValue() override;
+  float CurrentValue() override;
 
  private:
+  std::vector<std::unique_ptr<NeuronNodeSynapse>> synapses_;
+
+  float current_value_;
+
   DECLARE_NON_COPYABLE(NeuronNode);
 };
 

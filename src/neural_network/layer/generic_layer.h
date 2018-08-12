@@ -29,6 +29,7 @@ class GenericLayer : public Layer {
   ~GenericLayer() {
   }
 
+  // Layer implementation:
   uint32 count() const override {
     return nodes_.size();
   }

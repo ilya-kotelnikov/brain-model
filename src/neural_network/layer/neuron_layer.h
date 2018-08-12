@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <stdint.h>
+
 #include "base/macros.h"
 #include "neural_network/layer/generic_layer.h"
 #include "neural_network/node/neuron_node.h"
@@ -15,18 +17,27 @@ namespace neunet {
 
 class NeuronLayer : public GenericLayer<NeuronNode> {
  public:
-  NeuronLayer(uint32 neuron_count);
-  ~NeuronLayer();  
+  struct NeuronNodeParams {
+    uint32 synapses_per_neuron_count;
+    float spike_treshold_value;
+    float spike_value;
 
-  uint32 synapses_per_neuron_count();
-  void set_synapses_per_neuron_count(uint32 value);
+    NeuronNodeParams();
+  };
+
+ public:
+  NeuronLayer(uint32 neuron_count);
+  ~NeuronLayer();
+
+  const NeuronNodeParams& neuron_node_params() const; 
 
   void GenerateSynapses(Layer* pre_layer);
 
  private:
-  uint32 synapses_per_neuron_count_;
+  NeuronNodeParams neuron_node_params_;
 
   DECLARE_NON_COPYABLE(NeuronLayer);
 };
 
 }  // namespace neunet
+

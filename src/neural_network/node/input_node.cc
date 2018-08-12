@@ -19,7 +19,11 @@ float InputNode::set_value_from_dataset(float value) {
   value_from_dataset_ = value;
 }
 
-float InputNode::value() {
+void InputNode::UpdateValue() {
+  // Nothing to do: the value is static during a neunet calculation.
+}
+
+float InputNode::CurrentValue() {
   return value_from_dataset_;
 }
 

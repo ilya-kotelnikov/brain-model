@@ -5,23 +5,26 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
+#include "neural_network/layer/output_layer.h"
+
+#include <assert.h>
+#include <stdint.h>
+
 #include "neural_network/node/output_node.h"
 
 namespace neunet {
 
-OutputNode::OutputNode(Layer* layer, Node* last_neuron_layer_node)
-    : Node(layer), last_neuron_layer_node_(last_neuron_layer_node) {
+OutputLayer::OutputLayer(uint32 output_count, Layer* last_neuron_layer)
+    : GenericLayer<OutputNode>(output_count),
+      last_neuron_layer_(last_neuron_layer) {
+  assert(output_count == last_neuron_layer->count());
 }
 
-OutputNode::~OutputNode() {
+OutputLayer::~OutputLayer() {
 }
 
-void OutputNode::UpdateValue() {
-  // Nothing to do: for now output is just same as the last neuron node value.
-}
-
-float OutputNode::CurrentValue() {
-  return last_neuron_layer_node_->CurrentValue();
+Layer* OutputLayer::last_neuron_layer() {
+  return last_neuron_layer_;
 }
 
 }  // namespace neunet
