@@ -7,19 +7,13 @@
 
 #pragma once
 
-#include <memory>
-#include <vector>
-
-#include <stdint.h>
-
 #include "base/macros.h"
-#include "neural_network/layer/layer.h"
+#include "neural_network/layer/generic_layer.h"
+#include "neural_network/node/neuron_node.h"
 
 namespace neunet {
 
-class NeuronNode;
-
-class NeuronLayer : public Layer {
+class NeuronLayer : public GenericLayer<NeuronNode> {
  public:
   NeuronLayer(uint32 neuron_count);
   ~NeuronLayer();  
@@ -27,15 +21,10 @@ class NeuronLayer : public Layer {
   uint32 synapses_per_neuron_count();
   void set_synapses_per_neuron_count(uint32 value);
 
-  uint32 count() const override;
-  Node* node(uint32 i) override;
-
   void GenerateSynapses(Layer* pre_layer);
 
  private:
   uint32 synapses_per_neuron_count_;
-
-  std::vector<std::unique_ptr<NeuronNode>> neurons_;
 
   DECLARE_NON_COPYABLE(NeuronLayer);
 };

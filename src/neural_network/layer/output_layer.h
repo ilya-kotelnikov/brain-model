@@ -7,30 +7,11 @@
 
 #pragma once
 
-#include <memory>
-#include <vector>
-
-#include <stdint.h>
-
-#include "base/macros.h"
-#include "neural_network/layer/layer.h"
+#include "neural_network/layer/generic_layer.h"
+#include "neural_network/node/output_node.h"
 
 namespace neunet {
 
-class OutputNode;
-
-class OutputLayer : public Layer {
- public:
-  OutputLayer(uint32 output_count);
-  ~OutputLayer();
-
-  uint32 count() const override;
-  Node* node(uint32 i) override;
-
- private:
-  std::vector<std::unique_ptr<OutputNode>> outputs_;
-
-  DECLARE_NON_COPYABLE(OutputLayer);
-};
+using OutputLayer = GenericLayer<OutputNode>;
 
 }  // namespace neunet
