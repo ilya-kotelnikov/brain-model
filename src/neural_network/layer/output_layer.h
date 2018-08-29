@@ -14,14 +14,13 @@ namespace neunet {
 
 class OutputLayer : public GenericLayer<OutputNode> {
  public:
-  OutputLayer(uint32 output_count, Layer* last_neuron_layer);
+  OutputLayer(uint32_t output_count);
   ~OutputLayer();
 
-  Layer* last_neuron_layer();
+  void BindToLastNeuronLayer(Layer* last_neuron_layer);
+  void Report();
 
  private:
-  Layer* last_neuron_layer_;
-
   DECLARE_NON_COPYABLE(OutputLayer);
 };
 

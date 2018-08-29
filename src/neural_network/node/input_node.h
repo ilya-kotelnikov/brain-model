@@ -17,7 +17,7 @@ class InputNode : public Node {
   InputNode(Layer* layer);
   ~InputNode();
 
-  float set_value_from_dataset(float value);
+  void set_value_from_dataset(float value);
 
   // Node implementation:
   void UpdateValue() override;

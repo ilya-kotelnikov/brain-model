@@ -7,12 +7,19 @@
 
 #include "neural_network/layer/layer.h"
 
+#include "neural_network/node/node.h"
+
 namespace neunet {
 
 Layer::Layer() {
 }
 
 Layer::~Layer() {
+}
+
+void Layer::Calculate() {
+  for (uint32_t i = 0; i < count(); ++i)
+    node(i)->UpdateValue();
 }
 
 }  // namespace neunet

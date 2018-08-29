@@ -8,6 +8,7 @@
 #include "neural_network/node/neuron_node_synapse.h"
 
 #include "neural_network/constants.h"
+#include "neural_network/node/node.h"
 
 namespace neunet {
 

@@ -15,7 +15,7 @@ InputNode::InputNode(Layer* layer) : Node(layer), value_from_dataset_(0.) {
 InputNode::~InputNode() {
 }
 
-float InputNode::set_value_from_dataset(float value) {
+void InputNode::set_value_from_dataset(float value) {
   value_from_dataset_ = value;
 }
 

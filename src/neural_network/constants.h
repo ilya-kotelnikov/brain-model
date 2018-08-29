@@ -11,8 +11,8 @@
 
 namespace neunet {
 
-constexpr uint32 kDefaultNeuronPerLayerCount = 1000;
-constexpr uint32 kDefaultSynapsesPerNeuronCount = 10;
+constexpr uint32_t kDefaultNeuronPerLayerCount = 1000;
+constexpr uint32_t kDefaultSynapsesPerNeuronCount = 10;
 
 constexpr float kDefaultInitialNeuronNodeSynapseWeight = 0.;
 constexpr float kDefaultNeuronSpikeTresholdValue = 0.05;

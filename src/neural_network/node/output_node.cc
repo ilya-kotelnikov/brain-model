@@ -7,13 +7,20 @@
 
 #include "neural_network/node/output_node.h"
 
+#include <assert.h>
+
 namespace neunet {
 
-OutputNode::OutputNode(Layer* layer, Node* last_neuron_layer_node)
-    : Node(layer), last_neuron_layer_node_(last_neuron_layer_node) {
+OutputNode::OutputNode(Layer* layer)
+    : Node(layer), last_neuron_layer_node_(nullptr) {
 }
 
 OutputNode::~OutputNode() {
+}
+
+void OutputNode::BindToLastNeuronLayerNode(Node* last_neuron_layer_node) {
+  assert(!last_neuron_layer_node_);
+  last_neuron_layer_node_ = last_neuron_layer_node;
 }
 
 void OutputNode::UpdateValue() {

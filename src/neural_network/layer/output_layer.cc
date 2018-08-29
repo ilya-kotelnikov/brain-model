@@ -7,6 +7,8 @@
 
 #include "neural_network/layer/output_layer.h"
 
+#include <iostream>
+
 #include <assert.h>
 #include <stdint.h>
 
@@ -14,17 +16,27 @@
 
 namespace neunet {
 
-OutputLayer::OutputLayer(uint32 output_count, Layer* last_neuron_layer)
-    : GenericLayer<OutputNode>(output_count),
-      last_neuron_layer_(last_neuron_layer) {
-  assert(output_count == last_neuron_layer->count());
+OutputLayer::OutputLayer(uint32_t output_count)
+    : GenericLayer<OutputNode>(output_count) {
 }
 
 OutputLayer::~OutputLayer() {
 }
 
-Layer* OutputLayer::last_neuron_layer() {
-  return last_neuron_layer_;
+void OutputLayer::BindToLastNeuronLayer(Layer* last_neuron_layer) {
+  assert(nodes_.size() == last_neuron_layer->count());
+  for (uint32_t i = 0; i < nodes_.size(); ++i)
+    nodes_[i]->BindToLastNeuronLayerNode(last_neuron_layer->node(i));
+}
+
+void OutputLayer::Report() {
+  std::cout << "Output values:" << std::endl;
+  std::cout << "--------------" << std::endl;
+  uint32_t i = 0;
+  for (const auto& node : nodes_) {
+    std::cout << i++ << ":\t" << node->CurrentValue() << std::endl;
+  }
+  std::cout << "--------------" << std::endl;
 }
 
 }  // namespace neunet

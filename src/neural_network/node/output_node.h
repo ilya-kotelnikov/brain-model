@@ -14,8 +14,10 @@ namespace neunet {
 
 class OutputNode : public Node {
  public:
-  OutputNode(Layer* layer, Node* last_neuron_layer_node);
+  OutputNode(Layer* layer);
   ~OutputNode();
+
+  void BindToLastNeuronLayerNode(Node* last_neuron_layer_node);
 
   // Node implementation:
   void UpdateValue() override;

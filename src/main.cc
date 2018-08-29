@@ -5,17 +5,27 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
-#include <stdio.h>
 #include <vector>
 
-int main() {
-  printf("hello, world!\n");
+#include <stdlib.h>
+#include <time.h>
 
-  std::vector<int> v({1,2,3});
-  for(auto& a : v) {
-    printf("%d,", a);
-  }
-  printf("!\n");
+#include "neural_network/layer/output_layer.h"
+#include "neural_network/neural_network.h"
+
+int main() {
+  srand(unsigned(time(nullptr)));
+
+  neunet::NeuralNetwork nnet(3, 2);
+
+  nnet.AddNeuronLayer();
+  nnet.AddNeuronLayer();
+
+  nnet.GenerateSynapses();
+
+  nnet.Calculate();
+
+  nnet.output_layer()->Report();
 
   return 0;
 }
