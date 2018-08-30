@@ -10,6 +10,8 @@
 #include <memory>
 #include <vector>
 
+#include <stdint.h>
+
 #include "base/macros.h"
 #include "neural_network/node/node.h"
 
@@ -19,7 +21,7 @@ class NeuronNodeSynapse;
 
 class NeuronNode : public Node {
  public:
-  NeuronNode(Layer* layer);
+  NeuronNode(Layer* layer, uint32_t index);
   ~NeuronNode();
 
   void AddSynapse(Node* pre_node);

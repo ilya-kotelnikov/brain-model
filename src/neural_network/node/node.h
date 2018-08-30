@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <stdint.h>
+
 #include "base/macros.h"
 
 namespace neunet {
@@ -15,17 +17,17 @@ class Layer;
 
 class Node {
  public:
-  Node(Layer* layer);
+  Node(Layer* layer, uint32_t index);
   ~Node();
 
   virtual void UpdateValue() = 0;
   virtual float CurrentValue() = 0;
 
-  Layer* layer();
+ protected:
+  Layer* layer_;
+  uint32_t index_;
 
  private:
-  Layer* layer_;
-
   DECLARE_NON_COPYABLE(Node);
 };
 

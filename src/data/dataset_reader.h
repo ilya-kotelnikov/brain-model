@@ -5,16 +5,18 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
-#include "neural_network/node/node.h"
+#pragma once
 
 #include <stdint.h>
 
-namespace neunet {
+namespace data {
 
-Node::Node(Layer* layer, uint32_t index) : layer_(layer), index_(index) {
-}
+struct DatasetValueCast;
 
-Node::~Node() {
-}
+struct DatasetReader {
+  virtual uint32_t GetDataSize() const = 0;
+  virtual const uint8_t* GetDataBuffer() const = 0;
+  virtual const DatasetValueCast& GetDataValueCast() const = 0;
+};
 
-}  // namespace neunet
+}  // namespace data

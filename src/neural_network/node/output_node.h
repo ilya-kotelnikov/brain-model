@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <stdint.h>
+
 #include "base/macros.h"
 #include "neural_network/node/node.h"
 
@@ -14,7 +16,7 @@ namespace neunet {
 
 class OutputNode : public Node {
  public:
-  OutputNode(Layer* layer);
+  OutputNode(Layer* layer, uint32_t index);
   ~OutputNode();
 
   void BindToLastNeuronLayerNode(Node* last_neuron_layer_node);

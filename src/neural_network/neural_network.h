@@ -14,10 +14,10 @@
 
 #include "base/macros.h"
 #include "neural_network/constants.h"
-#include "neural_network/layer/input_layer.h"
 
 namespace neunet {
 
+class InputLayer;
 class NeuronLayer;
 class OutputLayer;
 

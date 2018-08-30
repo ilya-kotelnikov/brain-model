@@ -8,11 +8,12 @@
 #include "neural_network/node/output_node.h"
 
 #include <assert.h>
+#include <stdint.h>
 
 namespace neunet {
 
-OutputNode::OutputNode(Layer* layer)
-    : Node(layer), last_neuron_layer_node_(nullptr) {
+OutputNode::OutputNode(Layer* layer, uint32_t index)
+    : Node(layer, index), last_neuron_layer_node_(nullptr) {
 }
 
 OutputNode::~OutputNode() {

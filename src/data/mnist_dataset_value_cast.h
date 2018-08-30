@@ -5,16 +5,17 @@
 // You may use, distribute and modify this code under the terms of GNU GPLv3.
 //------------------------------------------------------------------------------
 
-#include "neural_network/node/node.h"
+#pragma once
 
-#include <stdint.h>
+#include "data/dataset_value_cast.h"
 
-namespace neunet {
+namespace data {
 
-Node::Node(Layer* layer, uint32_t index) : layer_(layer), index_(index) {
-}
+struct MNISTDatasetValueCast : public DatasetValueCast {
+  float AsFloat(uint8_t ubyte_value) const override {
+    constexpr float kScaleFactor = 1. / 255.;
+    return ubyte_value * kScaleFactor;
+  }
+};
 
-Node::~Node() {
-}
-
-}  // namespace neunet
+}  // namespace data

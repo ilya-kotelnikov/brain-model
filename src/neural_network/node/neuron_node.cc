@@ -7,12 +7,15 @@
 
 #include "neural_network/node/neuron_node.h"
 
+#include <stdint.h>
+
 #include "neural_network/layer/neuron_layer.h"
 #include "neural_network/node/neuron_node_synapse.h"
 
 namespace neunet {
 
-NeuronNode::NeuronNode(Layer* layer) : Node(layer), current_value_(0.) {
+NeuronNode::NeuronNode(Layer* layer, uint32_t index)
+    : Node(layer, index), current_value_(0.) {
 }
 
 NeuronNode::~NeuronNode() {
@@ -24,7 +27,7 @@ void NeuronNode::AddSynapse(Node* pre_node) {
 
 void NeuronNode::UpdateValue() {
   const NeuronLayer::NeuronNodeParams& params_by_layer =
-      static_cast<NeuronLayer*>(layer())->neuron_node_params();
+      static_cast<NeuronLayer*>(layer_)->neuron_node_params();
 
   // Sum pre-nodes' values taking into account synapses' weights and produce
   // a spike if the treshold has been reached.

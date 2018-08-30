@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <stdint.h>
+
 #include "base/macros.h"
 #include "neural_network/node/node.h"
 
@@ -14,18 +16,14 @@ namespace neunet {
 
 class InputNode : public Node {
  public:
-  InputNode(Layer* layer);
+  InputNode(Layer* layer, uint32_t index);
   ~InputNode();
-
-  void set_value_from_dataset(float value);
 
   // Node implementation:
   void UpdateValue() override;
   float CurrentValue() override;
 
  private:
-  float value_from_dataset_;
-
   DECLARE_NON_COPYABLE(InputNode);
 };
 

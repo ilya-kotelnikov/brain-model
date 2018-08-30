@@ -17,7 +17,8 @@
 namespace neunet {
 
 OutputLayer::OutputLayer(uint32_t output_count)
-    : GenericLayer<OutputNode>(output_count) {
+    : GenericLayer<OutputNode>(output_count),
+      dataset_(nullptr) {
 }
 
 OutputLayer::~OutputLayer() {
@@ -29,14 +30,29 @@ void OutputLayer::BindToLastNeuronLayer(Layer* last_neuron_layer) {
     nodes_[i]->BindToLastNeuronLayerNode(last_neuron_layer->node(i));
 }
 
+void OutputLayer::BindToDataset(const data::DatasetReader* dataset) {
+  assert(dataset->GetDataSize() == 1);
+  dataset_ = dataset;
+}
+
 void OutputLayer::Report() {
+  const uint8_t expected_index = dataset_->GetDataBuffer()[0];
+
   std::cout << "Output values:" << std::endl;
   std::cout << "--------------" << std::endl;
   uint32_t i = 0;
   for (const auto& node : nodes_) {
-    std::cout << i++ << ":\t" << node->CurrentValue() << std::endl;
+    std::cout << i << ":\t" << node->CurrentValue();
+    if (expected_index == i)
+      std::cout << " (!)";
+    std::cout << std::endl;
+    ++i;
   }
   std::cout << "--------------" << std::endl;
+}
+
+void OutputLayer::Calculate() {
+  // TODO: analyze nodes' values in comparison to value from dataset.
 }
 
 }  // namespace neunet

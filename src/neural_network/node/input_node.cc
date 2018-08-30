@@ -7,16 +7,16 @@
 
 #include "neural_network/node/input_node.h"
 
+#include <stdint.h>
+
+#include "neural_network/layer/input_layer.h"
+
 namespace neunet {
 
-InputNode::InputNode(Layer* layer) : Node(layer), value_from_dataset_(0.) {
+InputNode::InputNode(Layer* layer, uint32_t index) : Node(layer, index) {
 }
 
 InputNode::~InputNode() {
-}
-
-void InputNode::set_value_from_dataset(float value) {
-  value_from_dataset_ = value;
 }
 
 void InputNode::UpdateValue() {
@@ -24,7 +24,7 @@ void InputNode::UpdateValue() {
 }
 
 float InputNode::CurrentValue() {
-  return value_from_dataset_;
+  return static_cast<InputLayer*>(layer_)->GetNodeValueFromDataset(index_);
 }
 
 }  // namespace neunet
