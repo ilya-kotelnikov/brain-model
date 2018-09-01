@@ -28,11 +28,10 @@ int main() {
 
     nnet.GenerateSynapses();
 
-    data::MNISTDataset input_dataset(L"../data/mnist/train-images.idx3-ubyte");
-    data::MNISTDataset output_dataset(L"../data/mnist/train-labels.idx1-ubyte");
-    nnet.input_layer()->BindToDataset(&input_dataset);
-    nnet.output_layer()->BindToDataset(&output_dataset);
-    while (input_dataset.ReadNext() && output_dataset.ReadNext()) {
+    data::MNISTDataset dataset(L"../data/mnist/train-images.idx3-ubyte",
+                               L"../data/mnist/train-labels.idx1-ubyte");
+    nnet.BindToDataset(&dataset);
+    while (dataset.ReadNext()) {
       nnet.input_layer()->Report();
       nnet.Calculate();
       break;  // TODO

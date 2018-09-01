@@ -12,6 +12,7 @@
 #include <assert.h>
 #include <stdint.h>
 
+#include "data/dataset_reader.h"
 #include "neural_network/layer/input_layer.h"
 #include "neural_network/layer/neuron_layer.h"
 #include "neural_network/layer/output_layer.h"
@@ -24,6 +25,11 @@ NeuralNetwork::NeuralNetwork(uint32_t input_count, uint32_t output_count) {
 }
 
 NeuralNetwork::~NeuralNetwork() {
+}
+
+void NeuralNetwork::BindToDataset(const data::DatasetReader* dataset) {
+  input_layer_->BindToDataset(dataset->GetInputReader());
+  output_layer_->BindToDataset(dataset->GetOutputReader());
 }
 
 InputLayer* NeuralNetwork::input_layer() const {

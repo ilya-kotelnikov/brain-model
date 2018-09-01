@@ -12,6 +12,7 @@
 #include <assert.h>
 #include <stdint.h>
 
+#include "data/dataset_file_reader.h"
 #include "neural_network/node/output_node.h"
 
 namespace neunet {
@@ -30,7 +31,7 @@ void OutputLayer::BindToLastNeuronLayer(Layer* last_neuron_layer) {
     nodes_[i]->BindToLastNeuronLayerNode(last_neuron_layer->node(i));
 }
 
-void OutputLayer::BindToDataset(const data::DatasetReader* dataset) {
+void OutputLayer::BindToDataset(const data::DatasetFileReader* dataset) {
   assert(dataset->GetDataSize() == 1);
   dataset_ = dataset;
 }

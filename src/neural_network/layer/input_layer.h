@@ -9,9 +9,12 @@
 
 #include <stdint.h>
 
-#include "data/dataset_reader.h"
 #include "neural_network/layer/generic_layer.h"
 #include "neural_network/node/input_node.h"
+
+namespace data {
+struct DatasetFileReader;
+}
 
 namespace neunet {
 
@@ -20,14 +23,14 @@ class InputLayer : public GenericLayer<InputNode> {
   InputLayer(uint32_t input_count);
   ~InputLayer();
 
-  void BindToDataset(const data::DatasetReader* dataset);
+  void BindToDataset(const data::DatasetFileReader* dataset);
   void Report();
 
   // Interface for nodes:
   float GetNodeValueFromDataset(uint32_t node_index) const;
 
  private:
-  const data::DatasetReader* dataset_;
+  const data::DatasetFileReader* dataset_;
 
   DECLARE_NON_COPYABLE(InputLayer);
 };

@@ -1,6 +1,7 @@
 ﻿EXECUTABLE = lab
 SOURCES = main.cc \
           data/mnist_dataset.cc \
+          data/mnist_dataset_file.cc \
           neural_network/layer/input_layer.cc \
           neural_network/layer/layer.cc \
           neural_network/layer/neuron_layer.cc \

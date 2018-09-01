@@ -7,13 +7,16 @@
 
 #pragma once
 
+#include <stdint.h>
+
 namespace data {
 
-struct DatasetFileReader;
+struct DatasetValueCast;
 
-struct DatasetReader {
-  virtual const DatasetFileReader* GetInputReader() const = 0;
-  virtual const DatasetFileReader* GetOutputReader() const = 0;
+struct DatasetFileReader {
+  virtual uint32_t GetDataSize() const = 0;
+  virtual const uint8_t* GetDataBuffer() const = 0;
+  virtual const DatasetValueCast& GetDataValueCast() const = 0;
 };
 
 }  // namespace data

@@ -15,6 +15,10 @@
 #include "base/macros.h"
 #include "neural_network/constants.h"
 
+namespace data {
+struct DatasetReader;
+}
+
 namespace neunet {
 
 class InputLayer;
@@ -25,6 +29,8 @@ class NeuralNetwork {
  public:
   NeuralNetwork(uint32_t input_count, uint32_t output_count);
   ~NeuralNetwork();
+
+  void BindToDataset(const data::DatasetReader* dataset);
 
   InputLayer* input_layer() const;
   OutputLayer* output_layer() const;

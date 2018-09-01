@@ -14,30 +14,25 @@
 #include <stdint.h>
 
 #include "data/dataset_reader.h"
-#include "data/mnist_dataset_value_cast.h"
+#include "data/mnist_dataset_file.h"
 
 namespace data {
 
 class MNISTDataset : public DatasetReader {
  public:
-  MNISTDataset(const wchar_t* ubyte_idx_filepath);
+  MNISTDataset(const wchar_t* input_ubyte_idx_filepath,
+               const wchar_t* output_ubyte_idx_filepath);
   ~MNISTDataset();
 
   bool ReadNext();
 
   // DatasetReader overrides:
-  uint32_t GetDataSize() const override;
-  const uint8_t* GetDataBuffer() const override;
-  const DatasetValueCast& GetDataValueCast() const override;
+  const DatasetFileReader* GetInputReader() const override;
+  const DatasetFileReader* GetOutputReader() const override;
 
- protected:
-  FILE* ubyte_idx_file_;
-  uint32_t data_count_;
-  uint32_t data_size_;
-  std::vector<uint8_t> data_read_next_;
-  MNISTDatasetValueCast data_value_cast_;
-
-  uint32_t ReadBigEndeanUint32();
+ private:
+   MNISTDatasetFile input_reader_;
+   MNISTDatasetFile output_reader_;
 };
 
 }  // namespace data

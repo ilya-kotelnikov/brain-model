@@ -12,6 +12,7 @@
 #include <assert.h>
 #include <stdint.h>
 
+#include "data/dataset_file_reader.h"
 #include "data/dataset_value_cast.h"
 #include "neural_network/node/input_node.h"
 
@@ -25,7 +26,7 @@ InputLayer::InputLayer(uint32_t input_count)
 InputLayer::~InputLayer() {
 }
 
-void InputLayer::BindToDataset(const data::DatasetReader* dataset) {
+void InputLayer::BindToDataset(const data::DatasetFileReader* dataset) {
   assert(count() == dataset->GetDataSize());
   dataset_ = dataset;
 }
