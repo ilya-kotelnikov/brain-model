@@ -10,7 +10,6 @@ SOURCES = main.cc \
           neural_network/node/neuron_node.cc \
           neural_network/node/neuron_node_synapse.cc \
           neural_network/node/node.cc \
-          neural_network/node/output_node.cc \
           neural_network/neural_network.cc \
 
 CXX = g++

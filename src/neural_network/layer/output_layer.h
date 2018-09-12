@@ -7,10 +7,12 @@
 
 #pragma once
 
+#include <bitset>
+#include <vector>
+
 #include <stdint.h>
 
-#include "neural_network/layer/generic_layer.h"
-#include "neural_network/node/output_node.h"
+#include "base/macros.h"
 
 namespace data {
 struct DatasetFileReader;
@@ -18,20 +20,27 @@ struct DatasetFileReader;
 
 namespace neunet {
 
-class OutputLayer : public GenericLayer<OutputNode> {
+class Layer;
+
+class OutputLayer {
  public:
+  static constexpr uint32_t kMaxLastLayerNeuronCount = 16;
+  using SpikeBitsHoldingType = std::bitset<kMaxLastLayerNeuronCount>;
+
   OutputLayer(uint32_t output_count);
   ~OutputLayer();
 
   void BindToLastNeuronLayer(Layer* last_neuron_layer);
   void BindToDataset(const data::DatasetFileReader* dataset);
-  void Report();
-
-  // Layer overrides:
-  void Calculate() override;
+  void Calculate();
+  void AnalyzeAndReport();
 
  private:
+  Layer* last_neuron_layer_;
   const data::DatasetFileReader* dataset_;
+
+  std::vector<std::vector<SpikeBitsHoldingType>> outputs_;
+  std::vector<SpikeBitsHoldingType> output_match_masks_;
 
   DECLARE_NON_COPYABLE(OutputLayer);
 };

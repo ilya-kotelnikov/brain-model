@@ -46,10 +46,11 @@ NeuronLayer* NeuralNetwork::AddNeuronLayer(uint32_t neuron_count) {
 }
 
 void NeuralNetwork::GenerateSynapses() {
-  // Add a special pre-output neuron layer with exact number of nodes matching
-  // count of outputs - output layer will provide values of this neuron layer as
-  // the result.
-  output_layer_->BindToLastNeuronLayer(AddNeuronLayer(output_layer_->count()));
+  // Add a special pre-output neuron layer with certain number of nodes suitable
+  // for classifying the outputs - output layer will analyze values of this
+  // neuron layer and associate output patterns with output classes.
+  output_layer_->BindToLastNeuronLayer(
+      AddNeuronLayer(OutputLayer::kMaxLastLayerNeuronCount));
 
   auto i_neuron_layer = neuron_layers_.begin();
   (*i_neuron_layer)->GenerateSynapses(input_layer_.get());

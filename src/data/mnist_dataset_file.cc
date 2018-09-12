@@ -70,6 +70,10 @@ bool MNISTDatasetFile::ReadNext() {
   return true;
 }
 
+uint32_t MNISTDatasetFile::GetDataCount() const {
+  return data_count_;
+}
+
 uint32_t MNISTDatasetFile::GetDataSize() const {
   return data_size_;
 }

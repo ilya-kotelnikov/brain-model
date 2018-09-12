@@ -26,6 +26,7 @@ class MNISTDatasetFile : public DatasetFileReader {
   bool ReadNext();
 
   // DatasetFileReader overrides:
+  uint32_t GetDataCount() const override;
   uint32_t GetDataSize() const override;
   const uint8_t* GetDataBuffer() const override;
   const DatasetValueCast& GetDataValueCast() const override;

@@ -14,6 +14,7 @@ namespace data {
 struct DatasetValueCast;
 
 struct DatasetFileReader {
+  virtual uint32_t GetDataCount() const = 0;
   virtual uint32_t GetDataSize() const = 0;
   virtual const uint8_t* GetDataBuffer() const = 0;
   virtual const DatasetValueCast& GetDataValueCast() const = 0;

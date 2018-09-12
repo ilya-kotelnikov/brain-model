@@ -31,12 +31,13 @@ int main() {
     data::MNISTDataset dataset(L"../data/mnist/train-images.idx3-ubyte",
                                L"../data/mnist/train-labels.idx1-ubyte");
     nnet.BindToDataset(&dataset);
-    while (dataset.ReadNext()) {
-      nnet.input_layer()->Report();
+    for (size_t i = 0; i < 1000 && dataset.ReadNext(); ++i) {
+      if (i % 100 == 0)
+        std::cout << "Processing dataset record #" << i << "..." << std::endl;
       nnet.Calculate();
-      break;  // TODO
     }
-    nnet.output_layer()->Report();
+    std::cout << "Analyzing results..." << std::endl;
+    nnet.output_layer()->AnalyzeAndReport();
   } catch(const std::exception& e) {
     std::cerr << "Exception: " << e.what() << std::endl;
   }
