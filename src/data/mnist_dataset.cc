@@ -19,7 +19,14 @@ MNISTDataset::~MNISTDataset() {
 }
 
 bool MNISTDataset::ReadNext() {
-  return input_reader_.ReadNext() && output_reader_.ReadNext();
+  // TODO: test code.
+  const uint8_t curr_label = output_reader_.GetDataBuffer()[0];
+  do {
+    if (!(input_reader_.ReadNext() && output_reader_.ReadNext()))
+      return false;
+  } while(output_reader_.GetDataBuffer()[0] != curr_label);
+  return true;
+  //return input_reader_.ReadNext() && output_reader_.ReadNext();
 }
 
 const DatasetFileReader* MNISTDataset::GetInputReader() const {

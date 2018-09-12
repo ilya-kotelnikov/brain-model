@@ -18,10 +18,9 @@ class NeuronNodeSynapse {
   NeuronNodeSynapse(Node* pre_node);
   ~NeuronNodeSynapse();
 
+  float pre_node_value() const;
   float weight() const;
   void set_weight(float value);
-
-  float CalculateValue();
 
  private:
   Node* pre_node_;

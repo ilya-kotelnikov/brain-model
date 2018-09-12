@@ -21,7 +21,7 @@ namespace neunet {
 template<typename NodeType>
 class GenericLayer : public Layer {
  public:
-  GenericLayer(uint32_t node_count) {
+  GenericLayer(Delegate* delegate, uint32_t node_count) : Layer(delegate) {
     for (uint32_t i = 0; i < node_count; ++i)
       nodes_.emplace_back(std::make_unique<NodeType>(this, i));
   }

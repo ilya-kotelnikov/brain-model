@@ -20,11 +20,11 @@ namespace neunet {
 
 class InputLayer : public GenericLayer<InputNode> {
  public:
-  InputLayer(uint32_t input_count);
+  InputLayer(Delegate* delegate, uint32_t input_count);
   ~InputLayer();
 
   void BindToDataset(const data::DatasetFileReader* dataset);
-  void Report();
+  void Visualize() const;
 
   // Interface for nodes:
   float GetNodeValueFromDataset(uint32_t node_index) const;

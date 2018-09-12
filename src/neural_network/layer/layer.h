@@ -17,8 +17,14 @@ class Node;
 
 class Layer {
  public:
-  Layer();
+  struct Delegate {
+    virtual bool IsTraining() const = 0;
+  };
+
+  Layer(Delegate* delegate);
   ~Layer();
+
+  Delegate* delegate();
 
   virtual uint32_t count() const = 0;
   virtual Node* node(uint32_t i) = 0;
@@ -26,6 +32,8 @@ class Layer {
   virtual void Calculate();
 
  private:
+  Delegate* delegate_;
+
   DECLARE_NON_COPYABLE(Layer);
 };
 

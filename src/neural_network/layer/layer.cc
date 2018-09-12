@@ -11,10 +11,14 @@
 
 namespace neunet {
 
-Layer::Layer() {
+Layer::Layer(Delegate* delegate) : delegate_(delegate) {
 }
 
 Layer::~Layer() {
+}
+
+Layer::Delegate* Layer::delegate() {
+  return delegate_;
 }
 
 void Layer::Calculate() {

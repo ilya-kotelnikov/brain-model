@@ -21,17 +21,20 @@ class NeuronLayer : public GenericLayer<NeuronNode> {
     uint32_t synapses_per_neuron_count;
     float spike_treshold_value;
     float spike_value;
+    int max_age_for_spontenious_spike;
+    float spontenious_spike_probability;
 
     NeuronNodeParams();
   };
 
  public:
-  NeuronLayer(uint32_t neuron_count);
+  NeuronLayer(Delegate* delegate, uint32_t neuron_count);
   ~NeuronLayer();
 
   const NeuronNodeParams& neuron_node_params() const;
 
   void GenerateSynapses(Layer* pre_layer);
+  void Visualize() const;
 
  private:
   NeuronNodeParams neuron_node_params_;

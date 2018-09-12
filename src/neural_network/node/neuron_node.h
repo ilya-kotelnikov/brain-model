@@ -25,6 +25,7 @@ class NeuronNode : public Node {
   ~NeuronNode();
 
   void AddSynapse(Node* pre_node);
+  void Visualize() const;
 
   // Node implementation:
   void UpdateValue() override;
@@ -34,6 +35,7 @@ class NeuronNode : public Node {
   std::vector<std::unique_ptr<NeuronNodeSynapse>> synapses_;
 
   float current_value_;
+  int age_;
 
   DECLARE_NON_COPYABLE(NeuronNode);
 };

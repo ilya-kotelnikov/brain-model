@@ -7,6 +7,8 @@
 
 #include "neural_network/layer/neuron_layer.h"
 
+#include <iostream>
+
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -18,11 +20,13 @@ namespace neunet {
 NeuronLayer::NeuronNodeParams::NeuronNodeParams()
    : synapses_per_neuron_count(kDefaultSynapsesPerNeuronCount),
      spike_treshold_value(kDefaultNeuronSpikeTresholdValue),
-     spike_value(kDefaultNeuronSpikeValue) {
+     spike_value(kDefaultNeuronSpikeValue),
+     max_age_for_spontenious_spike(kDefaultNeuronMaxAgeForSponteniousSpike),
+     spontenious_spike_probability(kDefaultNeuronSponteniousSpikeProbability) {
 }
 
-NeuronLayer::NeuronLayer(uint32_t neuron_count)
-    : GenericLayer<NeuronNode>(neuron_count) {
+NeuronLayer::NeuronLayer(Delegate* delegate, uint32_t neuron_count)
+    : GenericLayer<NeuronNode>(delegate, neuron_count) {
 }
 
 NeuronLayer::~NeuronLayer() {
@@ -42,6 +46,15 @@ void NeuronLayer::GenerateSynapses(Layer* pre_layer) {
       const uint32_t pre_node_index = uint32_t(rand() % pre_nodes_count);
       node->AddSynapse(pre_layer->node(pre_node_index));
     }
+  }
+}
+
+void NeuronLayer::Visualize() const {
+  uint32_t i = 0;
+  for (const auto& node : nodes_) {
+    std::cout << "Neuron #" << i++ << ": ";
+    node->Visualize();
+    std::cout << std::endl;
   }
 }
 

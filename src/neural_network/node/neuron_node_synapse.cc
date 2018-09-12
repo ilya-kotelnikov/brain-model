@@ -20,16 +20,16 @@ NeuronNodeSynapse::NeuronNodeSynapse(Node* pre_node)
 NeuronNodeSynapse::~NeuronNodeSynapse() {
 }
 
+float NeuronNodeSynapse::pre_node_value() const {
+  return pre_node_->CurrentValue();
+}
+
 float NeuronNodeSynapse::weight() const {
   return weight_;
 }
 
 void NeuronNodeSynapse::set_weight(float value) {
   weight_ = value;
-}
-
-float NeuronNodeSynapse::CalculateValue() {
-  return pre_node_->CurrentValue() * weight_;
 }
 
 }  // namespace neunet

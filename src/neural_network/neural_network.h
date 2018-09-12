@@ -14,6 +14,7 @@
 
 #include "base/macros.h"
 #include "neural_network/constants.h"
+#include "neural_network/layer/layer.h"
 
 namespace data {
 struct DatasetReader;
@@ -25,8 +26,13 @@ class InputLayer;
 class NeuronLayer;
 class OutputLayer;
 
-class NeuralNetwork {
+class NeuralNetwork : public Layer::Delegate {
  public:
+  enum class Age {
+    kNewborn,  // trainable.
+    kMature,  // not trainable.
+  };
+
   NeuralNetwork(uint32_t input_count, uint32_t output_count);
   ~NeuralNetwork();
 
@@ -39,8 +45,14 @@ class NeuralNetwork {
       uint32_t neuron_count = kDefaultNeuronPerLayerCount);
   void GenerateSynapses();
   void Calculate();
+  void Maturate();
+  void Visualize() const;
+
+  // Layer::Delegate overrides:
+  bool IsTraining() const override;
 
  private:
+  Age age_;
   std::unique_ptr<InputLayer> input_layer_;
   std::vector<std::unique_ptr<NeuronLayer>> neuron_layers_;
   std::unique_ptr<OutputLayer> output_layer_;
